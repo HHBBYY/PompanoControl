@@ -115,7 +115,7 @@ void TcpCtrl::SendLightData(int id, short int *brightness)
     SendData(sendbuf,7);
 }
 
-void TcpCtrl::SendAltData(float *p_dis1, float *p_enr1, float *p_cor1, float *p_dis2, float *p_enr2, float *cor2, float* p_watertemp)
+void TcpCtrl::SendAltData(float *p_dis1, float *p_enr1, float *p_cor1, float *p_dis2, float *p_enr2, float *p_cor2, float* p_watertemp)
 {
     char sendbuf[34];
     sendbuf[0] = 0xFF; sendbuf[1] = 0xFE;
@@ -124,9 +124,9 @@ void TcpCtrl::SendAltData(float *p_dis1, float *p_enr1, float *p_cor1, float *p_
     memcpy(&sendbuf[5] ,p_dis1,4);
     memcpy(&sendbuf[9] ,p_enr1,4);
     memcpy(&sendbuf[13],p_cor1,4);
-    memcpy(&sendbuf[17],p_dis1,4);
-    memcpy(&sendbuf[21],p_enr1,4);
-    memcpy(&sendbuf[25],p_cor1,4);
+    memcpy(&sendbuf[17],p_dis2,4);
+    memcpy(&sendbuf[21],p_enr2,4);
+    memcpy(&sendbuf[25],p_cor2,4);
     memcpy(&sendbuf[29],p_watertemp,4);
     sendbuf[33] = 0x00; //CRC
 
